@@ -48,7 +48,6 @@ conn.commit()
 conn.close()
 
 print("Database created and 10 food items inserted successfully ✅")
-=======
 import sqlite3
 
 conn = sqlite3.connect("food.db")
