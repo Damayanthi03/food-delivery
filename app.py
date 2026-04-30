@@ -1,12 +1,7 @@
-<<<<<<< HEAD
 from flask import Flask, render_template, request, redirect
 import sqlite3
 
 app = Flask(__name__)
-
-# ----------------------------
-# DATABASE CREATION SECTION
-# ----------------------------
 
 db = sqlite3.connect("food.db")
 cur = db.cursor()
@@ -40,11 +35,6 @@ CREATE TABLE IF NOT EXISTS orders (
 
 db.commit()
 db.close()
-
-# ----------------------------
-# ROUTES START HERE
-# ----------------------------
-# Home Page - Show Menu
 @app.route("/")
 def home():
     db = sqlite3.connect("food.db")
@@ -54,14 +44,9 @@ def home():
     db.close()
     return render_template("index.html", foods=foods)
 
-
-# Order Page
 @app.route("/order/<int:food_id>")
 def order(food_id):
     return render_template("order.html", food_id=food_id)
-
-
-# Save Order
 @app.route("/submit_order", methods=["POST"])
 def submit_order():
     name = request.form["name"]
@@ -108,10 +93,6 @@ import sqlite3
 
 app = Flask(__name__)
 
-# ----------------------------
-# DATABASE CREATION SECTION
-# ----------------------------
-
 db = sqlite3.connect("food.db")
 cur = db.cursor()
 
@@ -144,11 +125,6 @@ CREATE TABLE IF NOT EXISTS orders (
 
 db.commit()
 db.close()
-
-# ----------------------------
-# ROUTES START HERE
-# ----------------------------
-# Home Page - Show Menu
 @app.route("/")
 def home():
     db = sqlite3.connect("food.db")
@@ -158,14 +134,10 @@ def home():
     db.close()
     return render_template("index.html", foods=foods)
 
-
-# Order Page
 @app.route("/order/<int:food_id>")
 def order(food_id):
     return render_template("order.html", food_id=food_id)
 
-
-# Save Order
 @app.route("/submit_order", methods=["POST"])
 def submit_order():
     name = request.form["name"]
@@ -206,5 +178,3 @@ def view_orders():
 
 if __name__ == "__main__":
     app.run(debug=True)
->>>>>>> a55cb2f759e1d9ff5833ccfd1bb9538a924c8a02
- 
