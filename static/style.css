@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 body {
     font-family: Arial;
     background: #fff3e0;
@@ -36,3 +37,43 @@ button {
     margin-top: 5px;
     cursor: pointer;
 }
+=======
+body {
+    font-family: Arial;
+    background: #fff3e0;
+    text-align: center;
+}
+
+h1 {
+    color: #e65100;
+}
+
+.menu {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.card {
+    background: white;
+    width: 220px;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px gray;
+}
+
+.card img {
+    width: 100%;
+    height: 150px;
+    border-radius: 10px;
+}
+
+button {
+    background: #ff6f00;
+    color: white;
+    border: none;
+    padding: 8px;
+    margin-top: 5px;
+    cursor: pointer;
+}
+>>>>>>> a55cb2f759e1d9ff5833ccfd1bb9538a924c8a02
