@@ -1,13 +1,6 @@
-<<<<<<< HEAD
 import sqlite3
-
-# Connect to database
 conn = sqlite3.connect("food.db")
 cur = conn.cursor()
-
-# -----------------------------
-# Create Tables
-# -----------------------------
 
 cur.execute("""
 CREATE TABLE IF NOT EXISTS users (
@@ -35,11 +28,6 @@ CREATE TABLE IF NOT EXISTS orders (
     payment TEXT
 )
 """)
-
-# -----------------------------
-# Insert 10 Food Items
-# -----------------------------
-
 food_items = [
     (1, "Pizza", 199),
     (2, "Burger", 99),
@@ -63,13 +51,9 @@ print("Database created and 10 food items inserted successfully ✅")
 =======
 import sqlite3
 
-# Connect to database
 conn = sqlite3.connect("food.db")
 cur = conn.cursor()
 
-# -----------------------------
-# Create Tables
-# -----------------------------
 
 cur.execute("""
 CREATE TABLE IF NOT EXISTS users (
@@ -98,10 +82,6 @@ CREATE TABLE IF NOT EXISTS orders (
 )
 """)
 
-# -----------------------------
-# Insert 10 Food Items
-# -----------------------------
-
 food_items = [
     (1, "Pizza", 199),
     (2, "Burger", 99),
@@ -117,9 +97,7 @@ food_items = [
 
 cur.executemany("INSERT OR IGNORE INTO food VALUES (?, ?, ?)", food_items)
 
-# Save & Close
 conn.commit()
 conn.close()
 
 print("Database created and 10 food items inserted successfully ✅")
->>>>>>> a55cb2f759e1d9ff5833ccfd1bb9538a924c8a02
