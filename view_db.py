@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import sqlite3
 
 db = sqlite3.connect("food.db")
@@ -31,7 +30,6 @@ db.commit()
 db.close()
 
 print("10 food items added successfully")
-=======
 import sqlite3
 
 db = sqlite3.connect("food.db")
@@ -64,4 +62,3 @@ db.commit()
 db.close()
 
 print("10 food items added successfully")
->>>>>>> a55cb2f759e1d9ff5833ccfd1bb9538a924c8a02
