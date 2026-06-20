@@ -1,5 +1,8 @@
 #  QuickBite – Food Delivery Web Application
 
+## Home Page
+
+![food-delivery](assets/home.png.png)
 QuickBite is a modern Food Delivery Web Application built using Python (Flask), HTML, CSS, SQLite, and Jinja Templates.
 
 The application allows users to browse food items, enter delivery details, choose payment methods, and place orders. All orders are stored in a database and can be viewed through an admin dashboard.
