@@ -1,0 +1,147 @@
+{
+  "info": {
+    "_postman_id": "b124dc40-e00d-4b26-8e43-6cb193878493",
+    "name": "QuickBite (existing Flask routes)",
+    "description": "Requests match the routes currently defined in app.py. These are HTML/form endpoints, not a JSON REST API. The submit request writes an order, and the dashboard displays delivery contact details. Use only with a disposable development database and fake test data; the dashboard is currently unauthenticated.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://127.0.0.1:5000",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "GET menu",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/",
+          "host": ["{{baseUrl}}"],
+          "path": [""]
+        },
+        "description": "Loads the existing menu page."
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('Menu page returns 200', function () { pm.response.to.have.status(200); });",
+              "pm.test('Menu contains QuickBite', function () { pm.expect(pm.response.text()).to.include('QuickBite'); });"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "GET order form for food item 1",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/order/1",
+          "host": ["{{baseUrl}}"],
+          "path": ["order", "1"]
+        },
+        "description": "Loads the existing delivery-details form for item ID 1."
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('Order form returns 200', function () { pm.response.to.have.status(200); });",
+              "pm.test('Form posts to the existing submit route', function () { pm.expect(pm.response.text()).to.include('action=\"/submit_order\"'); });"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "POST submit order (writes data; fake values only)",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": [
+            {
+              "key": "name",
+              "value": "Postman QA Test Customer",
+              "type": "text"
+            },
+            {
+              "key": "phone",
+              "value": "5550100100",
+              "type": "text"
+            },
+            {
+              "key": "address",
+              "value": "99 Postman Test Road",
+              "type": "text"
+            },
+            {
+              "key": "food_id",
+              "value": "1",
+              "type": "text"
+            },
+            {
+              "key": "payment",
+              "value": "Cash on Delivery",
+              "type": "text"
+            }
+          ]
+        },
+        "url": {
+          "raw": "{{baseUrl}}/submit_order",
+          "host": ["{{baseUrl}}"],
+          "path": ["submit_order"]
+        },
+        "description": "This existing POST route inserts an order into SQLite. Send only to an isolated development database; this example uses fake values."
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('Order submission returns 200', function () { pm.response.to.have.status(200); });",
+              "pm.test('Order confirmation is shown', function () { pm.expect(pm.response.text()).to.include('Order Placed Successfully'); });"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "GET orders dashboard (contains customer details)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/view_orders",
+          "host": ["{{baseUrl}}"],
+          "path": ["view_orders"]
+        },
+        "description": "Existing dashboard route. It is currently unauthenticated and returns customer names, phone numbers, and addresses. Do not use against real customer data or expose it publicly."
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('Dashboard returns 200', function () { pm.response.to.have.status(200); });",
+              "pm.test('Dashboard page is rendered', function () { pm.expect(pm.response.text()).to.include('Orders Dashboard'); });"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
