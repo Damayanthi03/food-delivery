@@ -1,0 +1,106 @@
+# Project Upgrade: Professional Food Delivery Website + Customer and Admin Portals
+
+I have an existing Food Delivery web application imported from GitHub. I want to upgrade its UI, improve its functionality, and implement proper customer and admin order management.
+
+## 1. Important Instructions
+- First inspect the entire existing project structure, frontend, backend, database, authentication, routes, and current features.
+- Do NOT rebuild the project from scratch.
+- Preserve the existing technology stack, working features, database schema where possible, and existing source code.
+- Before editing, provide a short implementation plan and list the files that need changes.
+- Use the attached YumYum food-delivery screenshot as the visual design reference.
+- Make changes in a separate Git branch if Git is available.
+
+## 2. Modern UI and Theme
+Redesign the existing website using a professional food-delivery theme:
+- Warm orange/yellow, cream, white, and dark brown/black colors.
+- Clean typography, rounded cards, subtle shadows, consistent spacing, and attractive food images.
+- Responsive layouts for desktop, tablet, and mobile.
+- Professional loading states, empty states, success messages, and error messages.
+- Maintain consistent styling across all pages.
+
+## 3. Navigation Bar
+Create a consistent navbar with:
+- Home
+- Restaurants
+- Menu
+- Reviews
+- About Us
+- Contact Us
+- Cart with a live item count
+- Login/Register or user profile, depending on authentication status
+
+Use working navigation links and highlight the active page.
+
+## 4. Restaurant and Menu Pages
+- Display a restaurant banner with name, description, rating, delivery time, and other existing data.
+- Add food category tabs, such as Combo, Single, Special, Sides, Drinks, and Others, where appropriate.
+- Show food cards with images, name, description, price, and Add to Cart button.
+- Add search, category filtering, and sorting where supported by the existing data.
+- Make Add to Cart, quantity controls, and cart totals functional.
+- Prevent duplicate cart entries where the existing cart design expects quantities to be updated.
+
+## 5. Shopping Cart and Checkout
+- Display cart items, images, quantities, individual prices, subtotal, and final total.
+- Allow customers to increase/decrease quantities and remove items.
+- Validate required checkout fields.
+- Use the existing backend and order-creation API.
+- Show an order confirmation only after the backend successfully creates the order.
+- Never claim an order succeeded if the request fails.
+- Do not integrate real payments unless the project already supports them or I explicitly request them.
+
+## 6. Customer Portal
+Create or improve a customer dashboard accessible to authenticated customers.
+Include:
+- My Profile
+- My Orders
+- Order History
+- Order Details
+- Current Order Status
+- Reorder option if supported
+
+A customer must see only their own orders. Display order date, order number, ordered food items, quantities, total amount, delivery details, and status where available.
+
+Persist order history using the existing database and backend. Do not rely only on frontend state or local storage for authoritative order records.
+
+## 7. Admin/Owner Portal
+Move the existing all-customer-orders display out of the regular customer-facing pages into a protected Admin/Owner dashboard.
+
+The admin dashboard should include:
+- Overview of orders and order statuses.
+- All customer orders in a searchable, filterable table.
+- Order details, customer information needed to fulfil orders, items, quantities, totals, and timestamps.
+- Ability to update order statuses using the statuses supported by the existing backend.
+- Clear empty states and error handling.
+
+Only authorized admin/owner accounts may access this dashboard or update order statuses. Implement server-side authorization for admin API endpoints. Hiding admin links in the UI is not sufficient.
+
+Regular customers must never be able to view other customers' orders or modify admin-only data. Do not make every registered user an admin.
+
+## 8. Authentication and Data Integrity
+- Reuse the existing authentication system.
+- Enforce customer ownership and admin permissions on the backend.
+- Validate incoming data and prevent unauthorized order access.
+- Keep credentials, API keys, and secrets in environment variables.
+- Do not hardcode passwords, expose secrets, or create a public admin account with a known password.
+- Preserve existing data and avoid destructive database migrations.
+
+## 9. Testing
+Add automated tests appropriate to the project's technology stack:
+- Playwright end-to-end tests for navigation, menu browsing, adding/removing cart items, quantity changes, checkout validation, customer order history, and admin order management.
+- Postman collection for actual existing API endpoints, including success and error scenarios.
+- Test that a customer cannot access another customer's orders.
+- Test that a normal customer cannot access admin pages or admin APIs.
+- Test that an admin can access authorized order-management functions.
+- Use test data and a test environment; do not create real purchases or modify production data.
+
+Run the available tests and report which passed or failed. Do not report tests as passed unless they were actually executed successfully.
+
+## 10. Documentation and Delivery
+- Provide the exact commands to install dependencies, configure environment variables, start the frontend and backend, and run tests locally in VS Code.
+- Create or update a README with setup instructions.
+- Include Playwright configuration, test files, and a Postman collection.
+- Summarize changed files and any required database migrations.
+- Identify any features that could not be completed.
+- Do not overwrite or push changes to my original GitHub branch without my review.
+
+Start by inspecting the existing application and presenting the implementation plan. Then implement the upgrade incrementally, keeping the application runnable throughout.
